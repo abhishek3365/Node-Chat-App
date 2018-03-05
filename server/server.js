@@ -15,23 +15,21 @@ app.use ( express.static(publicPath)  );
 io.on('connection' , (socket) => {
     console.log ('New User connected');
 
-    socket.emit('newMessageEvent',generateMessage('Admin' , 'Welcome to the chat app'));
+    socket.emit('newMessage',generateMessage('Admin' , 'Welcome to the chat app'));
 
-    socket.broadcast.emit('newMessageEvent', generateMessage('Admin' , 'New User Joined') );
+    socket.broadcast.emit('newMessage', generateMessage('Admin' , 'New User Joined') );
 
 //    socket.on('disconnect',() => {
 //       console.log('User was disconnected');
 //    });
 
-    socket.on('createMessageEvent',(newMessage) => {
+    socket.on('createMessage',(newMessage , callback) => {
         console.log('createMessage' , newMessage);
-        io.emit('newMessageEvent',{
-            from : newMessage.from,
-            text : newMessage.text,
-            createdAt : new Date().getTime()
-        })
+        io.emit('newMessage',generateMessage( newMessage.from , newMessage.text) );
 
-        socket.broadcast.emit('newMessageEvent',  generateMessage( newMessage.from , newMessage.text));
+//        socket.broadcast.emit('newMessage',  generateMessage( newMessage.from , newMessage.text));
+
+        callback('This is from the server');
 
     });
 
