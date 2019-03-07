@@ -78,7 +78,7 @@ socket.on('newImage' , function(message){
 
     var template = jQuery('#message-template').html();
     var html = Mustache.render(template , {
-        text : message.text,
+        image : message.text,
         from : message.from,
         createdAt : formattedTime
     });

@@ -47,6 +47,18 @@
             </li>
         </script>
 
+        <script id="image-template" type="text/template">
+            <li class="message">
+                <div class="message__title">
+                    <h4>{{from}}</h4>
+                    <span>{{createdAt}}</span>
+                </div>
+                <div class="message__image">
+                    <img src="data:image/png;base64, {{image}}">
+                </div>
+            </li>
+        </script>
+
         <script id="location-message-template" type="text/template">
             <li class="message">
                 <div class="message__title">
