@@ -49,6 +49,18 @@ io.on('connection' , (socket) => {
 
     });
 
+    socket.on('createImage',(newMessage , callback) => {
+
+        var user = users.getUser(socket.id);
+
+        if(user && isRealString(newMessage.text))
+        {
+            io.to(user.room).emit('newImage',generateMessage( user.name , newMessage.image) );
+            callback();
+        }
+
+    });
+
     socket.on('createLocationMessage' , ( coords ) => {
 
         var user = users.getUser(socket.id);
