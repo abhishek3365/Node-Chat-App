@@ -55,7 +55,7 @@ io.on('connection' , (socket) => {
 
         var user = users.getUser(socket.id);
 
-        if(user && isRealString(newMessage.text))
+        if(user && isRealString(newMessage.image))
         {
             io.to(user.room).emit('newImage',generateMessage( user.name , newMessage.image) );
             callback();
