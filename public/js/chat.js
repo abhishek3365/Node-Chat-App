@@ -72,6 +72,8 @@ socket.on('newMessage' , function(message){
 
 socket.on('newImage' , function(message){
 
+    console.log("newImage event");
+
     var formattedTime = moment(message.createdAt).format('h:mm a');
 
     var template = jQuery('#message-template').html();

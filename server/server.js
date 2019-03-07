@@ -51,6 +51,8 @@ io.on('connection' , (socket) => {
 
     socket.on('createImage',(newMessage , callback) => {
 
+        console.log("createImage event");
+
         var user = users.getUser(socket.id);
 
         if(user && isRealString(newMessage.text))
