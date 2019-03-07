@@ -33,7 +33,7 @@ io.on('connection' , (socket) => {
         socket.emit('newMessage',generateMessage('Admin' , 'Welcome to the chat app'));
         socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin' , `${params.name} Joined`) );
 
-        callback();
+        // callback();
 
     });
 
