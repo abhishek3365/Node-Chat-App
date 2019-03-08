@@ -5,6 +5,7 @@ const socketIO = require ('socket.io');
 const {generateMessage , generateLocationMessage } = require('./utils/message');
 const {isRealString} = require('./utils/validation');
 const {Users} = require('./utils/users');
+const {Screens} = require('./utils/screen');
 
 const publicPath = path.join(__dirname , '../public');
 const port = process.env.PORT || 3000;
@@ -12,6 +13,7 @@ var app = express();
 var server = http.createServer( app );
 var io = socketIO(server);
 var users = new Users();
+var screens = new Screens();
 
 app.use ( express.static(publicPath)  );
 
@@ -26,13 +28,12 @@ io.on('connection' , (socket) => {
         }
 
         socket.join(params.room);
-        users.removeUser(socket.id);
-        users.addUser(socket.id , params.name , params.room)
+        screens.removeUser(socket.id);
+        screens.addscreen(socket.id , params.name , params.room)
 
-        io.to(params.room).emit('updateUserList', users.getUserList(params.room) );
-        socket.emit('newMessage',generateMessage('Admin' , 'Welcome to the chat app'));
-        socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin' , `${params.name} Joined`) );
-
+        io.to(params.room).emit('updateScreenList', screens.getScreenList(params.room) );
+        // socket.emit('newMessage',generateMessage('Admin' , 'Welcome to the chat app'));
+        // socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin' , `${params.name} Joined`) );
         // callback();
 
     });
