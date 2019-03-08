@@ -28,7 +28,7 @@ io.on('connection' , (socket) => {
         }
 
         socket.join(params.room);
-        screens.removeUser(socket.id);
+        screens.removeScreen(socket.id);
         screens.addscreen(socket.id , params.name , params.room)
 
         io.to(params.room).emit('updateScreenList', screens.getScreenList(params.room) );
