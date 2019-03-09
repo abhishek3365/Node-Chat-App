@@ -21,7 +21,7 @@ socket.on('newImage' , function(message){
 
     var template = jQuery('#display-template').html();
     var html = Mustache.render(template , {
-        image : message.text
+        image : message.image
     });
 
     jQuery('#main-display-body').append(html);
