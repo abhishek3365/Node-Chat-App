@@ -54,11 +54,14 @@ io.on('connection' , (socket) => {
 
         console.log("createImage event");
 
-        var user = users.getUser(socket.id);
+        var user = screens.getScreen(socket.id);
+        var screen = newMessage.screen
+
+        var screenToSend = screens.getScreenByRoomAndName( user.room , newMessage.image )
 
         if(user && isRealString(newMessage.image))
         {
-            io.to(user.room).emit('newImage',generateMessage( user.name , newMessage.image) );
+            io.to(screenToSend.id).emit('newImage',generateMessage( newMessage.image) );
             // callback();
         }
 

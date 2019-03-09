@@ -15,6 +15,19 @@ socket.on('connect' , function() {
 
 })
 
+socket.on('newImage' , function(message){
+
+    console.log( "Image recieved" );
+
+    var template = jQuery('#display-template').html();
+    var html = Mustache.render(template , {
+        image : message.text
+    });
+
+    jQuery('#main-display-body').append(html);
+
+});
+
 socket.on('disconnect' , function() {
     console.log('Disconnected to the server');
 })

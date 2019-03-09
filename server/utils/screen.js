@@ -31,6 +31,13 @@ class Screens {
 
         return namesArray;
     }
+
+    getScreenByRoomAndName( room , name ){
+
+        var screen = this.screens.filter((screen) => screen.room === room && screen.name == name )[0];
+        return screen;
+
+    }
 }
 
 module.exports = {Screens};
