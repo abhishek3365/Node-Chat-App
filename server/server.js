@@ -61,7 +61,7 @@ io.on('connection' , (socket) => {
 
         if(user && isRealString(newMessage.image))
         {
-            io.to(screenToSend.id).emit('newImage',generateMessage( newMessage.image) );
+            io.to(screenToSend.id).emit('newImage', { image : newMessage.image } );
             // callback();
         }
 
