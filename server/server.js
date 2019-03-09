@@ -57,7 +57,7 @@ io.on('connection' , (socket) => {
         var user = screens.getScreen(socket.id);
         var screen = newMessage.screen
 
-        var screenToSend = screens.getScreenByRoomAndName( user.room , newMessage.image )
+        var screenToSend = screens.getScreenByRoomAndName( user.room , newMessage.screen )
 
         if(user && isRealString(newMessage.image))
         {
