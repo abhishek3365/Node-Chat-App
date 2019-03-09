@@ -29,7 +29,7 @@ io.on('connection' , (socket) => {
 
         socket.join(params.room);
         screens.removeScreen(socket.id);
-        screens.addscreen(socket.id , params.name , params.room)
+        screens.addscreen(socket.id , params.screen , params.room)
 
         io.to(params.room).emit('updateScreenList', screens.getScreenList(params.room) );
         // socket.emit('newMessage',generateMessage('Admin' , 'Welcome to the chat app'));
