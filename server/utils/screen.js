@@ -34,7 +34,9 @@ class Screens {
 
     getScreenByRoomAndName( room , name ){
 
-        var screen = this.screens.filter((screen) => screen.room === room && screen.name == name )[0];
+        console.log( `Screens - ${JSON.stringify( this.screens )}` );
+        var screen = this.screens.filter((screen) => (screen.room === room && screen.name === name) )[0];
+        console.log( `Room  - ${room} , Name - ${name}` );
         return screen;
 
     }
