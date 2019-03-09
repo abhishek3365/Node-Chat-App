@@ -19,12 +19,14 @@ socket.on('newImage' , function(message){
 
     console.log( "Image recieved" );
 
-    var template = jQuery('#display-template').html();
-    var html = Mustache.render(template , {
-        image : message.image
-    });
+    $("#display-image").attr( "src" , `data:image/jpeg;base64, ${message.image }`)
 
-    jQuery('#main-display-body').append(html);
+    // var template = jQuery('#display-template').html();
+    // var html = Mustache.render(template , {
+    //     image : message.image
+    // });
+
+    // jQuery('#main-display-body').append(html);
 
 });
 
